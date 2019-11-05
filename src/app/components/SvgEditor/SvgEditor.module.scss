@@ -1,0 +1,22 @@
+svg {
+  position: relative;
+}
+
+.shape {
+  &:hover {
+    fill: green;
+  }
+}
+
+.selected {
+  fill: green;
+}
+
+.background {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}

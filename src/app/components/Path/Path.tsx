@@ -1,10 +1,10 @@
 import React, { SVGAttributes } from "react";
-import { IShape } from "../models";
+import { IShape } from "../../data/models";
 
 const buildPath = (shape: IShape): string => {
-  const { lines } = shape;
+  const { points } = shape;
 
-  const curves = lines.map((lineTo) => `L ${lineTo.x} ${lineTo.y}`);
+  const curves = points.map((point) => `L ${point.x} ${point.y}`);
 
   let instructions = [`M ${shape.startCordinate.x} ${shape.startCordinate.y}`, ...curves];
 
@@ -18,11 +18,28 @@ const buildPath = (shape: IShape): string => {
 interface IProps extends SVGAttributes<SVGPathElement> {
   shape: IShape;
   fill?: string;
+  onSelected?: (shape: IShape) => void;
 }
 
 const Path: React.FC<IProps> = (props: IProps) => {
-  const { shape, fill, ...rest } = props;
-  return <path {...rest} d={buildPath(shape)} fill={fill} stroke="gray" strokeWidth={2} />;
+  const { shape, fill, onSelected, onClick, ...rest } = props;
+
+  return (
+    <path
+      {...rest}
+      d={buildPath(shape)}
+      fill={fill}
+      stroke="gray"
+      strokeWidth={1}
+      onClick={(e: React.MouseEvent<SVGPathElement, MouseEvent>): void => {
+        if (onSelected) {
+          onSelected(shape);
+        } else {
+          onClick && onClick(e);
+        }
+      }}
+    />
+  );
 };
 
 export default Path;

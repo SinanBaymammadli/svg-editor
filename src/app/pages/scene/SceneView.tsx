@@ -22,7 +22,7 @@ export function SceneView(props: IProps): JSX.Element {
       setScene(s);
       setTemplate(t);
     }
-  }, []);
+  }, [id]);
 
   return <div>{scene && template && <SceneViewer scene={scene} template={template} />}</div>;
 }

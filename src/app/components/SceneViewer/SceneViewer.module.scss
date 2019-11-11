@@ -1,7 +1,21 @@
-.svg {
-  width: 100%;
+.sceneViewer {
+  position: relative;
 }
 
-.path:hover {
-  fill: green;
+.overlay {
+  opacity: 0;
+  will-change: opacity;
+  transition: opacity 1s ease;
+}
+
+.overlayActive {
+  opacity: 1;
+}
+
+.shapeInfo {
+  position: absolute;
+  left: 0;
+  top: 45%;
+  background-color: white;
+  padding: 50px;
 }

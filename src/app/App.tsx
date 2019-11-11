@@ -1,9 +1,9 @@
 import React from "react";
 import { useRoutes, useRedirect, A } from "hookrouter";
+import styles from "./App.module.scss";
 import TemplateList from "./pages/template/TemplateList";
 import TemplateEdit from "./pages/template/TemplateEdit";
 import TemplateCreate from "./pages/template/TemplateCreate";
-import styles from "./App.module.scss";
 import { SceneList } from "./pages/scene/SceneList";
 import { SceneCreate } from "./pages/scene/SceneCreate";
 import { SceneEdit } from "./pages/scene/SceneEdit";
@@ -15,8 +15,8 @@ const routes = {
   "/template/create": (): JSX.Element => <TemplateCreate />,
   "/scene/list": (): JSX.Element => <SceneList />,
   "/scene/edit/:id": ({ id }: { id?: string }): JSX.Element => (id ? <SceneEdit id={id} /> : <div>Nope</div>),
-  "/scene/:id": ({ id }: { id?: string }): JSX.Element => (id ? <SceneView id={id} /> : <div>Nope</div>),
   "/scene/create": (): JSX.Element => <SceneCreate />,
+  "/scene/:id": ({ id }: { id?: string }): JSX.Element => (id ? <SceneView id={id} /> : <div>Nope</div>),
 };
 
 const App: React.FC = () => {

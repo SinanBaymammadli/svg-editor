@@ -35,18 +35,15 @@ export class TemplateCreator extends Component<IProps, IState> {
     },
   };
 
-  static getDerivedStateFromProps(props: IProps, state: IState): IState | null {
-    const { template } = props;
+  componentDidMount = (): void => {
+    const { template } = this.props;
 
     if (template) {
-      return {
-        ...state,
+      this.setState({
         template,
-      };
+      });
     }
-
-    return null;
-  }
+  };
 
   isCollides = (startCoordinate: Coordinate, lastCordinate: Coordinate, radius = 5): boolean => {
     const xd = startCoordinate.x - lastCordinate.x;

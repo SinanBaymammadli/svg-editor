@@ -25,14 +25,14 @@ export interface ITemplateForm extends ITemplateBase {
   imageFile?: File;
 }
 
-interface ShapeInfo {
+export interface IShapeInfo {
   shapeId: string;
   title: string;
 }
 
 interface ISceneBase {
   templateId: string;
-  shapeInfos: ShapeInfo[];
+  shapeInfos: IShapeInfo[];
 }
 
 export interface ISceneView extends ISceneBase {

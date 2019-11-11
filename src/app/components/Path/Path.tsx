@@ -1,7 +1,7 @@
 import React, { SVGAttributes } from "react";
 import { IShape } from "../../data/models";
 
-const buildPath = (shape: IShape): string => {
+export const buildPath = (shape: IShape): string => {
   const { points } = shape;
 
   const curves = points.map((point) => `L ${point.x} ${point.y}`);
@@ -26,7 +26,6 @@ const Path: React.FC<IProps> = (props: IProps) => {
 
   return (
     <path
-      {...rest}
       d={buildPath(shape)}
       fill={fill}
       stroke="gray"
@@ -38,6 +37,7 @@ const Path: React.FC<IProps> = (props: IProps) => {
           onClick && onClick(e);
         }
       }}
+      {...rest}
     />
   );
 };

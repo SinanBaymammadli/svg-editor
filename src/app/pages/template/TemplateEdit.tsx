@@ -15,7 +15,22 @@ const TemplateEdit: React.FC<IProps> = (props: IProps) => {
     setTemplate(templateRepo.getById(id));
   }, [id]);
 
-  return <div>{template && <TemplateCreator width={900} template={template} onSubmit={templateRepo.save} />}</div>;
+  return (
+    <div>
+      {template && (
+        <TemplateCreator
+          width={900}
+          template={template}
+          onSubmit={(f): void => {
+            templateRepo.edit({
+              ...f,
+              id,
+            });
+          }}
+        />
+      )}
+    </div>
+  );
 };
 
 export default TemplateEdit;

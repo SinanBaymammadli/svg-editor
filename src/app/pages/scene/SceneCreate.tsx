@@ -26,7 +26,6 @@ export function SceneCreate(): JSX.Element {
           </option>
         ))}
       </select>
-
       {selectedTemplate && <SceneCreator template={selectedTemplate} onSubmit={sceneRepo.save} />}
     </div>
   );
